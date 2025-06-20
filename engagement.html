@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gnanavigneshwar & Dharani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0; font-family: 'Poppins', sans-serif; color: #333; overflow-x: hidden;
+    }
+    title{
+      font-family: "Rouge Script", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('luxury-wedding-concept-small-leaf-branch.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff0000;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      background: rgba(0,0,0,0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      animation: fadeIn 2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section { padding: 4rem 2rem; max-width: 800px; margin: auto; }
+    .story .step {
+      margin-bottom: 3rem;
+      display: flex; align-items: center;
+    }
+    .step img { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-right: 2rem; }
+    .countdown { font-size: 1.5rem; text-align: center; margin-top: 2rem; }
+    .map iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
+    .rouge-script-regular {
+     font-family: "Rouge Script", cursive;
+     font-weight: 400;
+     font-style: normal;
+      }
+    .rsvp-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #b76e79;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .rsvp-button:hover { background: #a65c68; }
+    footer { text-align: center; margin: 2rem 0; font-size: 0.9rem; color: #666; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Gnanavigneshwar & Dharani</h1>
+  </div>
+
+  <section class="story">
+    <h2>Our Journey</h2>
+    <div class="step">
+      <img src="step1.jpg" alt="Met in college">
+      <p><strong>2018:</strong> We met at college and started our love story...</p>
+    </div>
+    <div class="step">
+      <img src="step2.jpg" alt="Proposal">
+      <p><strong>2024:</strong> He popped the question by the beach under a starlit sky...</p>
+    </div>
+  </section>
+
+  <section class="details">
+    <h2>Event Details</h2>
+    <p>📅 Wednesday, 02 July 2025 | 🕕 9:30 AM</p>
+    <p>📍 Rathinam Mahal, Menambedu, Ambattur, Chennai</p>
+    <section class="get directions">
+      <a href="https://maps.app.goo.gl/hrx21vTL7ptukenG7" target="_blank" class="rsvp-button">
+        Get Direction
+        <i style='font-size:24px' class='fas'>&#xf124;</i>
+      </a>
+    </section>
+    <div class="countdown" id="countdown">Counting down...</div>
+  </section>
+
+  <section class="gallery">
+    <h2>Our Moments</h2>
+    <!-- You could add a JS slider here or just grid images -->
+    <div style="display:flex; gap:1rem; overflow-x:auto;">
+      <img src="gal1.jpg" style="width:200px; border-radius:10px;">
+      <img src="gal2.jpg" style="width:200px; border-radius:10px;">
+      <img src="gal3.jpg" style="width:200px; border-radius:10px;">
+    </div>
+  </section>
+
+  <section class="location">
+    <h2>Venue Map</h2>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d3885.6377220738414!2d80.1642009!3d13.1221217!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3a526313cc462613%3A0xa2ee0098f98e83f4!2sRATHINAM%20MAHAL%2040%2F41%20Devanampattu%2C%20Menambedu%2C%20Ambattur%20Chennai%2C%20Tamil%20Nadu%20600053!3m2!1d13.1221217!2d80.1642009!5e0!3m2!1sen!2sin!4v1750321777443!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <section class="rsvp">
+    <h2>RSVP</h2>
+    <a href="https://wa.me/9789857939" target="_blank" class="rsvp-button">
+      RSVP on WhatsApp
+    </a>
+  </section>
+
+  <footer>
+    Thanks for being part of our special day 💕
+  </footer>
+
+  <script>
+    const cdEl = document.getElementById('countdown');
+    const target = new Date('July 02, 2025 09:30:00').getTime();
+    setInterval(() => {
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) {
+        cdEl.textContent = 'The big day is here 🎉';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      cdEl.textContent = `Countdown: ${d}d ${h}h ${m}m ${s}s`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
