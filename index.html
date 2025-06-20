@@ -158,6 +158,23 @@
      letter-spacing: 2px;
      animation: zoomIn 2s ease-in-out;
 }
+.couple-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+.couple-section img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.couple-section img:hover {
+  transform: scale(1.05);
+}
 .ganesha-icon img {
   width: 100px;
   margin-bottom: 1rem;
