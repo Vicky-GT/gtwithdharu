@@ -1,0 +1,43 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build Docker Image
+      run:  docker build -t vicky-gt/vigneshwarwithdharu .
+
+    - name: Install Trivy
+      run: |
+        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+        trivy --version
+
+    - name: Run Security Checks with Trivy
+      run: |
+        trivy image vicky-gt/vigneshwarwithdharu
+        exit_code=$?
+        if [ $exit_code -ne 0 ]; then
+          echo "Trivy found vulnerabilities. Exiting with code $exit_code."
+          exit $exit_code
+        fi
+
+    - name: Push Docker Image
+      run: |
+        docker tag vicky-gt/vigneshwarwithdharu vicky-gt/vigneshwarwithdharu:latest
+        docker push vicky-gt/vigneshwarwithdharu:latest
