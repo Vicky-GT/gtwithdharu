@@ -40,5 +40,5 @@ jobs:
 
     - name: Push Docker Image
       run: |
-        docker tag vicky-gt/vigneshwarwithdharu vigneshwargt/vigneshwarwithdharu:latest
+        docker tag vigneshwargt/vigneshwarwithdharu vigneshwargt/vigneshwarwithdharu:latest
         docker push vigneshwargt/vigneshwarwithdharu:latest
